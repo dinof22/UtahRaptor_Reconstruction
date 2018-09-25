@@ -10,6 +10,8 @@ public class MenuManager : MonoBehaviour {
     public GameObject FactsMenu;
     public GameObject LayersMenu;
     public GameObject PauseMenu;
+    public GameObject LeftToolTips;
+    public GameObject RIghtToolTips;
 
     public void RIghtRadialMenuToggle()
     {
@@ -17,10 +19,15 @@ public class MenuManager : MonoBehaviour {
         {
             RightRadialPanel.SetActive(false);
             LeftRadialPanel.SetActive(false);
+            RIghtToolTips.SetActive(true);
+            LeftToolTips.SetActive(true);
         }
         else
         {
             RightRadialPanel.SetActive(true);
+            RIghtToolTips.SetActive(false);  //tooltips off when radialmenu is active
+            LeftToolTips.SetActive(false);
+
         }
     }
 
@@ -30,10 +37,14 @@ public class MenuManager : MonoBehaviour {
         {
             RightRadialPanel.SetActive(false);
             LeftRadialPanel.SetActive(false);
+            RIghtToolTips.SetActive(true);
+            LeftToolTips.SetActive(true);
         }
         else
         {
             LeftRadialPanel.SetActive(true);
+            RIghtToolTips.SetActive(false);
+            LeftToolTips.SetActive(false);
         }
     }
 
