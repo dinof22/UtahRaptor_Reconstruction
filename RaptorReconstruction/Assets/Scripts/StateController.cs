@@ -6,6 +6,14 @@ using UnityEngine.AI;
 
 public class StateController : MonoBehaviour {
 
+
+    public Transform eyes;
+
+
     [HideInInspector] public NavMeshAgent _navMeshAgent;
     [HideInInspector] public List<Transform> wayPointList;
+
+
+
+
 }
