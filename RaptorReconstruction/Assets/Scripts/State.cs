@@ -6,11 +6,12 @@ using UnityEngine;
 public class State : ScriptableObject
 {
 
-    public Action[] actions;
+    public AIAction[] actions;
+    public Color sceneGizmoColor = Color.grey;
 
     public void updateState(StateController controller)
     {
-
+        DoActions(controller);
     }
 
     private void DoActions(StateController controller)
