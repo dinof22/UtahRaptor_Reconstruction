@@ -14,6 +14,7 @@ public class StateController : MonoBehaviour {
 
     [HideInInspector] public NavMeshAgent _navMeshAgent;
     [HideInInspector] public List<Transform> wayPointList;
+    [HideInInspector] public int nextWayPoint;
 
 
 
@@ -47,17 +48,16 @@ public class StateController : MonoBehaviour {
     private void Update()
     {
         if (!aiActive)
-        {
             return;
-        }
         currentState.updateState(this);
     }
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (currentState != null && eyes != null)
         {
             Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(eyes.position, _raptorStats.lookSphereCastRadius);
+            Gizmos.DrawWireSphere(eyes.position, 3);
+            //Gizmos.DrawWireSphere(eyes.position, _raptorStats.lookSphereCastRadius);
         }
     }
 }
