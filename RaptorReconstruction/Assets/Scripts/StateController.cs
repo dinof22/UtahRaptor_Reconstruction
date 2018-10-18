@@ -13,7 +13,7 @@ public class StateController : MonoBehaviour {
 
 
     [HideInInspector] public NavMeshAgent _navMeshAgent;
-    [HideInInspector] public List<Transform> wayPointList;
+    public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
 
 
@@ -26,6 +26,7 @@ public class StateController : MonoBehaviour {
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        setupAI(true, wayPointList);
     }
 
 
