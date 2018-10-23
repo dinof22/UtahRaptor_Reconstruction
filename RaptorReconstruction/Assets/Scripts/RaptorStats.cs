@@ -1,4 +1,14 @@
-﻿public class RaptorStats
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+[CreateAssetMenu (menuName = "PluggableAI/RaptorStats")]
+public class RaptorStats : ScriptableObject
 {
-    internal float lookSphereCastRadius = 2;
+    public  float lookSphereCastRadius = 3;
+    public float moveSpeed = 3;
+    public float lookRange = 40f;
+
+    public float eatingDistance = 0.5f;
 }

@@ -9,12 +9,15 @@ public class StateController : MonoBehaviour {
     public State currentState;
     public RaptorStats _raptorStats;
     public Transform eyes;
+    public State remainState;
 
 
 
     [HideInInspector] public NavMeshAgent _navMeshAgent;
     public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
+    [HideInInspector] public Transform chaseTarget;
+    public float foodMeter = 1;
 
 
 
@@ -57,9 +60,29 @@ public class StateController : MonoBehaviour {
         if (currentState != null && eyes != null)
         {
             Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(eyes.position, 3);
-            //Gizmos.DrawWireSphere(eyes.position, _raptorStats.lookSphereCastRadius);
+            //3 is spherecast radius, fix when raptorstats is working
+            Gizmos.DrawWireSphere(eyes.position, _raptorStats.lookSphereCastRadius);
         }
+    }
+
+    public void TransitionState(State nextState)
+    {
+        if (nextState != remainState)
+        {
+            currentState = nextState;
+            OnExitState();
+        }
+    }
+
+    public bool CheckIfCloseToFood(float eatingDistance)
+    {
+        return (_navMeshAgent.remainingDistance <= eatingDistance);
+    }
+
+    private void OnExitState()
+    {
+        foodMeter = foodMeter + 1;
+        //meatthing.destroy
     }
 }
 

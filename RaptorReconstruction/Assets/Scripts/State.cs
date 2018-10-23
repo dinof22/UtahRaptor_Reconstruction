@@ -7,11 +7,13 @@ public class State : ScriptableObject
 {
 
     public AIAction[] actions;
+    public Transition[] transitions;
     public Color sceneGizmoColor = Color.grey;
 
     public void updateState(StateController controller)
     {
         DoActions(controller);
+        CheckTransitions(controller);
     }
 
     private void DoActions(StateController controller)
@@ -21,4 +23,22 @@ public class State : ScriptableObject
             actions[i].Act(controller);
         }
     }
+
+    private void CheckTransitions(StateController controller)
+    {
+        for (int i = 0; i < transitions.Length; i++)
+        {
+            bool descisionSuccedded = transitions[i].descision.Decide(controller);
+
+            if (descisionSuccedded)
+            {
+                controller.TransitionState(transitions[i].trueState);
+            }
+            else
+            {
+                controller.TransitionState(transitions[i].falseState);
+            }
+        }
+    }
+
 }
