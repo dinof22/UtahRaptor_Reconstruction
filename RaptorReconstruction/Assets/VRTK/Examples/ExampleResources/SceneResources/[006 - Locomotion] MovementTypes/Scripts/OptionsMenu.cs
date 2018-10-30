@@ -7,6 +7,7 @@
         public VRTK_ControllerEvents leftController;
         public VRTK_ControllerEvents rightController;
         public GameObject controlObject;
+        public GameObject factsMenu;
 
         protected bool state;
 
@@ -52,6 +53,7 @@
         protected virtual void SetObjectVisibility()
         {
             controlObject.SetActive(state);
+            factsMenu.SetActive(true);
         }
     }
 }
