@@ -29,11 +29,11 @@
         protected virtual void ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
         {
             state = true;
-            Move();
+            //Move();
             SetObjectVisibility();
         }
 
-        protected virtual void Move()
+        public virtual void Move()
         {
             Transform playArea = VRTK_DeviceFinder.PlayAreaTransform();
             Transform headset = VRTK_DeviceFinder.HeadsetTransform();
