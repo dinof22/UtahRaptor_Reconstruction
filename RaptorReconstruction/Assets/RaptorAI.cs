@@ -2,12 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RaptorAI : MonoBehaviour {
+
+
+    public states current_State = states.Idle;
+    public NavMeshAgent raptorAgent;
 
     public float food_level;
     public float drink_level;
     public float scratch_level;
+
+    public List<Transform> wayPointList;
 
 
 
@@ -20,7 +27,7 @@ public class RaptorAI : MonoBehaviour {
         Scratch
     };
 
-    public states current_State = states.Idle;
+
 
     // Use this for initialization
     void Start()
@@ -99,21 +106,6 @@ public class RaptorAI : MonoBehaviour {
         yield return new WaitForEndOfFrame();
     }
 
-    private void Scratch_State()
-    {
-        if (current_State == states.Scratch)
-        {
-            print("im scratching");
-        }
-    }
-
-    public void Drink_State()
-    {
-        if (current_State == states.Drink)
-        {
-            print("im drinking");
-        }
-    }
 
     public void Idle_state()
     {
@@ -123,11 +115,25 @@ public class RaptorAI : MonoBehaviour {
         }
     }
 
+
+    //keep the states here in the order the transforms are set in the waypoint list (for simplicity)
+
+    private void Scratch_State()
+    {
+        if (current_State == states.Scratch)
+        {
+            print("im scratching");
+            raptorAgent.SetDestination(wayPointList[0].position);   // put transform list number in wayPointList
+        }
+    }
+
+
     public void Eat_State()
     {
         if (current_State == states.Eat)
         {
             print("im eating");
+            raptorAgent.SetDestination(wayPointList[1].position);   // put transform list number in wayPointList
 
             //eat logic here.....
             //walk to food
@@ -144,4 +150,17 @@ public class RaptorAI : MonoBehaviour {
             Find_lowest_stat();
         }
     }
+
+    public void Drink_State()
+    {
+        if (current_State == states.Drink)
+        {
+            print("im drinking");
+            raptorAgent.SetDestination(wayPointList[2].position);   // put transform list number in wayPointList
+        }
+    }
+
+
+
+
 }
