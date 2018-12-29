@@ -9,10 +9,13 @@ public class RaptorAI : MonoBehaviour {
 
     public states current_State = states.Idle;
     public NavMeshAgent raptorAgent;
+    bool arrived;
+    public Transform player_Position;
 
     public float food_level;
     public float drink_level;
     public float scratch_level;
+    public float curiosity_level;
 
     public List<Transform> wayPointList;
 
@@ -41,6 +44,7 @@ public class RaptorAI : MonoBehaviour {
         food_level = UnityEngine.Random.Range(0, 100);
         drink_level = UnityEngine.Random.Range(0, 100);
         scratch_level = UnityEngine.Random.Range(0, 100);
+        curiosity_level = UnityEngine.Random.Range(0, 100);
     }
 
     private void Update()
@@ -124,6 +128,7 @@ public class RaptorAI : MonoBehaviour {
         {
             print("im scratching");
             raptorAgent.SetDestination(wayPointList[0].position);   // put transform list number in wayPointList
+            scratch_level = 100;
         }
     }
 
@@ -134,6 +139,7 @@ public class RaptorAI : MonoBehaviour {
         {
             print("im eating");
             raptorAgent.SetDestination(wayPointList[1].position);   // put transform list number in wayPointList
+            food_level = 100;
 
             //eat logic here.....
             //walk to food
@@ -147,7 +153,7 @@ public class RaptorAI : MonoBehaviour {
 
 
             ///then run check for next state
-            Find_lowest_stat();
+            //Find_lowest_stat();
         }
     }
 
@@ -157,10 +163,16 @@ public class RaptorAI : MonoBehaviour {
         {
             print("im drinking");
             raptorAgent.SetDestination(wayPointList[2].position);   // put transform list number in wayPointList
+            drink_level = 100;
         }
     }
 
+    public void Summon_State()
+    {
+        print("Im going to the player");
+        raptorAgent.SetDestination(player_Position.position);
 
+    }
 
 
 }

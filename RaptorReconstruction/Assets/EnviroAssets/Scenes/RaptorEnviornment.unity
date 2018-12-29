@@ -49218,7 +49218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 833, y: -70}
+  m_AnchoredPosition: {x: 576, y: -70}
   m_SizeDelta: {x: 142, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889304962
@@ -80044,7 +80044,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -80168,6 +80168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_State: 0
   raptorAgent: {fileID: 1477590640}
+  player_Position: {fileID: 0}
   food_level: 0
   drink_level: 0
   scratch_level: 0
