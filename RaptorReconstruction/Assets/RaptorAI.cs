@@ -8,8 +8,10 @@ public class RaptorAI : MonoBehaviour {
 
 
     public states current_State = states.Idle;
-    public NavMeshAgent raptorAgent;
-    bool arrived;
+    NavMeshAgent raptorAgent;
+    Animator animator;
+
+    public bool arrived;
     public Transform player_Position;
 
     public float food_level;
@@ -18,10 +20,18 @@ public class RaptorAI : MonoBehaviour {
     public float curiosity_level;
 
     public List<Transform> wayPointList;
-
-
-
     public bool alive = true;
+
+
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        raptorAgent = GetComponent<NavMeshAgent>();
+
+        InvokeRepeating("pathCompleteCheck", 0, 0.5f);
+    }
+
     public enum states
     {
         Idle,
@@ -49,12 +59,53 @@ public class RaptorAI : MonoBehaviour {
 
     private void Update()
     {
+        //animator parameter controller
+        animator.SetFloat("Speed", raptorAgent.velocity.magnitude);
+
+
+        //need timers
         food_level -= 1 * Time.deltaTime;
         drink_level -= 1 * Time.deltaTime;
         scratch_level -= 1 * Time.deltaTime;
+
+
     }
 
 
+
+    public void pathCompleteCheck()
+    {
+        if (raptorAgent.pathPending)
+        {
+            return;
+        }
+        if (raptorAgent.remainingDistance < raptorAgent.stoppingDistance)
+        {
+            if (!arrived)
+            {
+                arrived = true;
+                switch (current_State)
+                {
+                    case states.Eat:
+                        StartCoroutine("eat_Action");
+                        break;
+                    case states.Drink:
+                        StartCoroutine("drink_Action");
+                        break;
+                    case states.Scratch:
+                        StartCoroutine("scratch_Action");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        else
+        {
+            arrived = false;
+        }
+
+    }
 
     //finds lowest need value need to see if I can change to a switch statement
     public void Find_lowest_stat()
@@ -122,24 +173,47 @@ public class RaptorAI : MonoBehaviour {
 
     //keep the states here in the order the transforms are set in the waypoint list (for simplicity)
 
+
+
+
+
+
+
+    /// <summary>
+    /// ////////////////////////////////////////Scratch State
+    /// </summary>
     private void Scratch_State()
     {
         if (current_State == states.Scratch)
         {
             print("im scratching");
             raptorAgent.SetDestination(wayPointList[0].position);   // put transform list number in wayPointList
-            scratch_level = 100;
         }
+    }
+    IEnumerator scratch_Action()
+    {
+        scratch_level = 100;
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0,3));
+        animator.SetBool("Eat", true);
+        yield return new WaitForSeconds(0.7f);
+        animator.SetBool("Eat", false);
+        yield return new WaitForSeconds(3f);
+        //animator.SetBool("Eat", false);
+        Find_lowest_stat();
     }
 
 
+
+    /// <summary>
+    /// /////////////////////////////////////////Eat state
+    /// </summary>
     public void Eat_State()
     {
         if (current_State == states.Eat)
         {
             print("im eating");
             raptorAgent.SetDestination(wayPointList[1].position);   // put transform list number in wayPointList
-            food_level = 100;
+
 
             //eat logic here.....
             //walk to food
@@ -156,23 +230,53 @@ public class RaptorAI : MonoBehaviour {
             //Find_lowest_stat();
         }
     }
+    IEnumerator eat_Action()
+    {
+        food_level = 100;
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0, 3));
+        animator.SetBool("Eat", true);
+        yield return new WaitForSeconds(0.7f);
+        animator.SetBool("Eat", false);
+        yield return new WaitForSeconds(3f);
+        //animator.SetBool("Eat", false);
+        Find_lowest_stat();
+    }
 
+
+
+    /// <summary>
+    /// ///////////////////////////////Drink state
+    /// </summary>
     public void Drink_State()
     {
         if (current_State == states.Drink)
         {
             print("im drinking");
             raptorAgent.SetDestination(wayPointList[2].position);   // put transform list number in wayPointList
-            drink_level = 100;
+
         }
     }
+    IEnumerator drink_Action()
+    {
+        drink_level = 100;
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0, 3));
+        animator.SetBool("Eat", true);
+        yield return new WaitForSeconds(0.7f);
+        animator.SetBool("Eat", false);
+        yield return new WaitForSeconds(3f);
+        //animator.SetBool("Eat", false);
+        Find_lowest_stat();
+    }
 
+
+
+    /// <summary>
+    /// //////////////////////////////////Summon state
+    /// </summary>
     public void Summon_State()
     {
         print("Im going to the player");
         raptorAgent.SetDestination(player_Position.position);
 
     }
-
-
 }
