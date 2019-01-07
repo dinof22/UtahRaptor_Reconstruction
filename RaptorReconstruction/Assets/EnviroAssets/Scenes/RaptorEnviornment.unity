@@ -10001,7 +10001,7 @@ GameObject:
   m_Layer: 0
   m_Name: DrinkPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10012,7 +10012,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 174271919}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.08, y: -0.41, z: 1.04}
+  m_LocalPosition: {x: -16.9, y: 0.79, z: 4.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1620564122}
@@ -11915,7 +11915,7 @@ GameObject:
   m_Layer: 0
   m_Name: ScratchPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11928,7 +11928,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.14, y: 9.48, z: -12.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 234607455}
   m_Father: {fileID: 1620564122}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13975,6 +13976,61 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 234096324}
   m_Mesh: {fileID: 4300198, guid: 14195a6de3bf5b84299faf080212a2aa, type: 3}
+--- !u!1001 &234607454
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 200226939}
+    m_Modifications:
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.479
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18aaab93cc08d7c4a979be4aa6e74c11, type: 2}
+    - target: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f802913f4d393924082ec9f65a7e6804, type: 3}
+  m_IsPrefabAsset: 0
+--- !u!4 &234607455 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: f802913f4d393924082ec9f65a7e6804,
+    type: 3}
+  m_PrefabInternal: {fileID: 234607454}
 --- !u!1 &236183295
 GameObject:
   m_ObjectHideFlags: 0
@@ -49304,7 +49360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 859, y: -70}
+  m_AnchoredPosition: {x: 704, y: -70}
   m_SizeDelta: {x: 142, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889304962
@@ -52407,6 +52463,7 @@ MonoBehaviour:
   drink_level: 0
   scratch_level: 0
   curiosity_level: 0
+  idle_level: 0
   wayPointList:
   - {fileID: 200226939}
   - {fileID: 1365928487}
@@ -74686,7 +74743,7 @@ GameObject:
   m_Layer: 0
   m_Name: EatPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -80321,6 +80378,7 @@ MonoBehaviour:
   drink_level: 0
   scratch_level: 0
   curiosity_level: 0
+  idle_level: 0
   wayPointList:
   - {fileID: 200226939}
   - {fileID: 1365928487}
