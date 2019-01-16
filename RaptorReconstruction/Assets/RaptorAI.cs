@@ -229,7 +229,7 @@ public class RaptorAI : MonoBehaviour {
     /// <summary>
     /// ////////////////////////////////////////Scratch State
     /// </summary>
-    private void Scratch_State()
+    public void Scratch_State()
     {
         if (current_State == states.Scratch)
         {
