@@ -91,6 +91,10 @@ public class RaptorAI : MonoBehaviour {
             if (!arrived)
             {
                 arrived = true;
+                /*
+                 * curentState = Stateclass
+                 * stateCalss.Startcoroutine
+                 */
                 switch (current_State)
                 {
                     case states.Eat:
@@ -195,6 +199,7 @@ public class RaptorAI : MonoBehaviour {
     {
         if (current_State == states.Idle)
         {
+            raptorAgent.stoppingDistance = 2;
             print("im idling");
             StartCoroutine("idle_Action");
             print("destination is: " + wayPointList[1].position);
@@ -234,6 +239,7 @@ public class RaptorAI : MonoBehaviour {
         if (current_State == states.Scratch)
         {
             print("im scratching");
+            raptorAgent.stoppingDistance = 2;
             raptorAgent.SetDestination(wayPointList[0].position);   // put transform list number in wayPointList
         }
     }
@@ -259,6 +265,7 @@ public class RaptorAI : MonoBehaviour {
         if (current_State == states.Eat)
         {
             print("im eating");
+            raptorAgent.stoppingDistance = 2;
             raptorAgent.SetDestination(wayPointList[1].position);   // put transform list number in wayPointList
 
 
@@ -299,6 +306,7 @@ public class RaptorAI : MonoBehaviour {
         if (current_State == states.Drink)
         {
             print("im drinking");
+            raptorAgent.stoppingDistance = 2;
             raptorAgent.SetDestination(wayPointList[2].position);   // put transform list number in wayPointList
 
         }
@@ -314,8 +322,6 @@ public class RaptorAI : MonoBehaviour {
         //animator.SetBool("Eat", false);
         Find_lowest_stat();
     }
-
-
 
     /// <summary>
     /// //////////////////////////////////Summon state

@@ -10,24 +10,24 @@ public class UIPopupText : VRTK_DestinationMarker {
     public Transform waypointForAction;
     public RaptorAI raptor;
 
-    private bool lastUsePressedState = false;
+    //private bool lastUsePressedState = false;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        print("something is touching me");
-        if (infoSlab.activeSelf)
-        {
-            infoSlab.SetActive(false);
-            print(waypointForAction.name);
-        }
-        else
-        {
-            infoSlab.SetActive(true);
-            print(waypointForAction.name);
-            runActionForWayPoint();
-            //make raptor do action of its waypoint
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    print("something is touching me");
+    //    if (infoSlab.activeSelf)
+    //    {
+    //        infoSlab.SetActive(false);
+    //        print(waypointForAction.name);
+    //    }
+    //    else
+    //    {
+    //        infoSlab.SetActive(true);
+    //        print(waypointForAction.name);
+    //        runActionForWayPoint();
+    //        //make raptor do action of its waypoint
+    //    }
+    //}
 
     /*
     private void OnTriggerStay(Collider collider)
